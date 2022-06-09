@@ -1,0 +1,26 @@
+EC2
+RDS
+Connect
+S3
+Lambda
+CloudFront
+Glacier
+SNS
+Lex
+EBS
+VPC
+Kinesis
+Auto-scaling
+IAM
+SQS
+Elastic Beanstalk
+DynamoDB
+ElastiCache
+Redshift
+Sagemaker
+Lightsail
+EFS
+Cloudwatch
+Chime
+Cognito
+Inspector
