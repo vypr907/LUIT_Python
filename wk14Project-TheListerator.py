@@ -16,11 +16,6 @@
 services = []
 
 #populate the list from text file
-#with open('LUIT_Python/services.txt','r') as f:
-#    lines = f.readlines()
-#    lines = [word.strip() for word in lines]
-#    services.append(lines)
-    
 file = open('LUIT_Python/services.txt','r')
 for line in file:
     strippedLine = line.strip()
@@ -28,4 +23,7 @@ for line in file:
     
 #print the list
 print(services)
+
+#print the length
+print("The list has",len(services),"entries.")
 
