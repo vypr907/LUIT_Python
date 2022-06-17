@@ -10,3 +10,38 @@
 # - generate random characters and numbers that will be included in the name
 # ---------------------------------------------------------------
 
+import random
+import string
+
+#variables
+numInstances = 0 #stores the number of names the user needs
+deptName = "" #stores the user's department name
+loopy = 0
+instName = "" #container for instance name
+
+abc = string.ascii_letters 
+
+#get input
+deptName = input("What department do you work in? ")
+deptName = deptName.replace(" ","_")
+while True:
+    try:
+        numInstances = int(input("How many instances are you creating? "))
+    except ValueError:
+        print("Sorry, I didn't understand that.")
+        continue
+
+    if numInstances < 0:
+        print("Sorry, I can't create negative names.")
+        continue
+    else:
+        #value was successfully parsed, and we're happy with its value.
+        #we're ready to exit the loop.
+        break
+
+#do the thing
+while loopy < numInstances:
+    #print("beep")
+    loopy += 1
+    instName = deptName+"-"+str(loopy)+random.choice(abc)+str(random.randint(0,10))+random.choice(abc)
+    print(instName)
