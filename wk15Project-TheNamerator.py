@@ -12,18 +12,40 @@
 
 import random
 import string
+import sys
 
 #variables
 numInstances = 0 #stores the number of names the user needs
 deptName = "" #stores the user's department name
 loopy = 0
 instName = "" #container for instance name
+authDepts = ['marketing','accounting', 'finops']
+isMatch = True
 
 abc = string.ascii_letters 
 
 #get input
+print("Welcome to The Namerator!")
+print("-----------------------------------")
+print("A Tool for the following Departments: ")
+print("Marketing | Accounting | FinOps")
+print("-----------------------------------")
+
 deptName = input("What department do you work in? ")
-deptName = deptName.replace(" ","_")
+
+for dept in authDepts:
+    if deptName.lower() == dept:
+        print("Department Authorized.")
+        isMatch = True
+        break #name matches authorized department
+    else:
+        isMatch = False
+        
+if isMatch == False:
+    print("Sorry, this tool is not authorized for your department.")
+    print("Goodbye.")
+    sys.exit()
+    
 while True:
     try:
         numInstances = int(input("How many instances are you creating? "))
@@ -40,8 +62,13 @@ while True:
         break
 
 #do the thing
+print()
+print("--------------------------------")
+print("Instance Names")
+print("--------------------------------")
+print()
 while loopy < numInstances:
     #print("beep")
     loopy += 1
-    instName = deptName+"-"+str(loopy)+random.choice(abc)+str(random.randint(0,10))+random.choice(abc)
+    instName = deptName.title()+"-"+str(loopy)+random.choice(abc)+str(random.randint(0,10))+random.choice(abc)
     print(instName)
