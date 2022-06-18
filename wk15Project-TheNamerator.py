@@ -17,12 +17,20 @@ import sys
 #variables
 numInstances = 0 #stores the number of names the user needs
 deptName = "" #stores the user's department name
-loopy = 0
 instName = "" #container for instance name
 authDepts = ['marketing','accounting', 'finops']
 isMatch = True
 
 abc = string.ascii_letters 
+
+#defining the function
+def nameGen(numInstances, deptName):
+    loopy = 0
+    while loopy < numInstances:
+        #print("beep")
+        loopy += 1
+        instName = deptName.title()+"-"+str(loopy)+random.choice(abc)+str(random.randint(0,10))+random.choice(abc)
+        print(instName)
 
 #get input
 print("Welcome to The Namerator!")
@@ -67,8 +75,5 @@ print("--------------------------------")
 print("Instance Names")
 print("--------------------------------")
 print()
-while loopy < numInstances:
-    #print("beep")
-    loopy += 1
-    instName = deptName.title()+"-"+str(loopy)+random.choice(abc)+str(random.randint(0,10))+random.choice(abc)
-    print(instName)
+#call the function
+nameGen(numInstances,deptName)
