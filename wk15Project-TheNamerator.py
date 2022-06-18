@@ -24,13 +24,14 @@ isMatch = True
 abc = string.ascii_letters 
 
 #defining the function
+#------------------------------------------------------------------------------
 def nameGen(numInstances, deptName):
     loopy = 0
     while loopy < numInstances:
-        #print("beep")
         loopy += 1
         instName = deptName.title()+"-"+str(loopy)+random.choice(abc)+str(random.randint(0,10))+random.choice(abc)
         print(instName)
+#------------------------------------------------------------------------------
 
 #get input
 print("Welcome to The Namerator!")
@@ -54,7 +55,7 @@ if isMatch == False:
     print("Goodbye.")
     sys.exit()
     
-while True:
+while True: #validating the number of instances entered
     try:
         numInstances = int(input("How many instances are you creating? "))
     except ValueError:
@@ -65,8 +66,7 @@ while True:
         print("Sorry, I can't create negative names.")
         continue
     else:
-        #value was successfully parsed, and we're happy with its value.
-        #we're ready to exit the loop.
+        #value is good, let's blow this popsicle stand
         break
 
 #do the thing
@@ -75,5 +75,4 @@ print("--------------------------------")
 print("Instance Names")
 print("--------------------------------")
 print()
-#call the function
 nameGen(numInstances,deptName)
