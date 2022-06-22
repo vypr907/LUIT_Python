@@ -24,7 +24,7 @@ cwd = cwd + "/LUIT_Python/randomFiles/"
 #print(cwd)
 
 #lets upload *ONLY* .png files (in this case, should actually only be one file)
-files = glob.glob(cwd + "*.png")
+files = glob.glob(cwd + "*.*") # + "*.png")
 
 #print(files)
 
