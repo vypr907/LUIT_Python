@@ -28,6 +28,9 @@ for digit in base_2:
         if count > high_score:
             high_score = count
         count = 0
+#final check
+if count > high_score:
+    high_score = count
 #_______________________________________________
 
 print(''.join(str(num) for num in base_2))
