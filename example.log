@@ -1,0 +1,2 @@
+INFO:root:The Source Language and Target Language codes are different - proceeding
+WARNING:root:The SourceLanguageCode is the same as the TargetLanguageCode - stopping
