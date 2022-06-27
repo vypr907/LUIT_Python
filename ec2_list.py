@@ -10,5 +10,5 @@ for reservation in reservations:
     instances = reservation["Instances"]
     for instance in instances:
         instanceId = instance["InstanceId"]
-        if("i-0fb72f66a357269cd" != instanceId): #don't list Cloud9 EC2
+        if("i-03c38a1757c4f0702" != instanceId): #don't list Cloud9 EC2
             print(instanceId)
