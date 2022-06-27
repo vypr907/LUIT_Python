@@ -17,15 +17,15 @@ response = ec2.describe_instances()
 
 reservations = response["Reservations"]
 
-tagKey = "Name"
-tagVal = "Test"
+tagKey = "Environment"
+tagVal = "Dev"
 
 
 
 #function to get the list of instances that have the right tag        
 def list_ec2_by_tag(tagKey, tagVal):
     response = ec2.describe_instances(
-        Filters=[
+        Filters=[ #using filters instead of loops and if/else to find the needed instances
             {
                 'Name': 'tag:'+tagKey,
                 'Values': [tagVal]
@@ -35,20 +35,22 @@ def list_ec2_by_tag(tagKey, tagVal):
     ec2List = []
     for reservation in (response["Reservations"]):
         for instance in reservation["Instances"]:
-            ec2List.append(instance["InstanceId"])
+            #as a backup. Tag filter should render my cloud9 instance safe. But just in case...
+            if ("i-03c38a1757c4f0702" != instance["InstanceId"]):
+                print("Has tag: ",instance["InstanceId"])
+                ec2List.append(instance["InstanceId"])
             
     return ec2List
     
 #function to terminate the correct instances
 def ec2_nuke(tgt_list):
-    
+    print("DELETING")
     #///NUKE\\\        
-    ec2_client.terminate_instances(InstanceIds=tgt_list)
+    ec2.terminate_instances(InstanceIds=tgt_list)
     
 
 
 def main():
-    print(list_ec2_by_tag(tagKey,tagVal))
     ec2_nuke(list_ec2_by_tag(tagKey,tagVal))
 
 
