@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------
 
 import boto3
+import json
 import random
 
 #create variables
@@ -16,22 +17,26 @@ randNum = 0
 message = ""
 
 #create boto3 SQS object
-sqs = boto3.resource('sqs')
+sqs = boto3.client('sqs')
 q = sqs.get_queue_url(QueueName='randomNumQ')
 
 #create lambda handler
 def lambda_handler(event, context):
+    print("lambda triggered")
     
     #generate a random number
     randNum = random.randint(0,1000)
     
     #create message
-    message = "Your random number is: "+str(randNum)
+    message = "Your bank account balance is: $"+str(randNum)
 
     #send message
     response = sqs.send_message(
         QueueUrl=q['QueueUrl'],
         MessageBody=message,
         )
-        
     
+    return {
+        'statusCode': 200,
+        'body': json.dumps(message)
+    }
